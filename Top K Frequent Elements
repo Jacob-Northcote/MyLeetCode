@@ -9,13 +9,13 @@ class Solution {
             new PriorityQueue<>((a, b) -> a.getValue() - b.getValue());
 
         for (Map.Entry<Integer, Integer> entry : nummap.entrySet()) {
-            minHeap.offer(entry);
+            minHeap.offer(entry);                                        //makes minheap k size/ the k largest occurences
             if (minHeap.size() > k) {
                 minHeap.poll(); // remove the least frequent
             }
         }
 
-        // Extract results from heap
+        // Extract results from heap to an array
         int[] result = new int[k];
         int i = 0;
         while (!minHeap.isEmpty()) {
