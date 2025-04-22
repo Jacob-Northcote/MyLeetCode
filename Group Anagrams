@@ -1,0 +1,18 @@
+class Solution {
+    public List<List<String>> groupAnagrams(String[] strs) {
+       Map<String, List<String>> anagramMap = new HashMap<>();
+
+       for (String word : strs) {
+            // Convert word to char array, sort it, then convert back to string as the key
+            char[] chars = word.toCharArray();
+            Arrays.sort(chars);
+            String key = new String(chars);
+       
+       anagramMap.computeIfAbsent(key, k -> new ArrayList<>()).add(word);
+        }
+
+        // Return all anagram groups
+        return new ArrayList<>(anagramMap.values());
+        
+    }
+}
