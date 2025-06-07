@@ -1,0 +1,17 @@
+public class Solution {
+
+    public boolean canJump(int[] nums) {
+        if (nums.length == 1) return true; // already at the end
+        return willJump(nums, nums.length - 1, 1);
+    }
+
+    private boolean willJump(int[] nums, int pos, int requiredLen) {
+        if (pos == 0) return nums[0] >= requiredLen;
+
+        if (nums[pos - 1] >= requiredLen) {
+            return willJump(nums, pos - 1, 1);
+        } else {
+            return willJump(nums, pos - 1, requiredLen + 1);
+        }
+    }
+}
