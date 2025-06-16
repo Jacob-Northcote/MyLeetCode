@@ -1,0 +1,22 @@
+
+
+class Solution {
+    public int lengthOfLongestSubstring(String s) {
+        HashMap<Character, Integer> lastSeen = new HashMap<>();
+        int maxLength = 0;
+        int start = 0; // start of the window
+
+        for (int i = 0; i < s.length(); i++) {
+            char c = s.charAt(i);
+
+            if (lastSeen.containsKey(c) && lastSeen.get(c) >= start) {
+                start = lastSeen.get(c) + 1; // Move past the last seen duplicate
+            }
+
+            lastSeen.put(c, i); // Update the last seen index
+            maxLength = Math.max(maxLength, i - start + 1);
+        }
+
+        return maxLength;
+    }
+}
