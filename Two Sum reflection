@@ -1,0 +1,15 @@
+class Solution {
+    public int[] twoSum(int[] nums, int target) {
+      HashMap<Integer,Integer> targetmap = new HashMap<>();
+
+      for(int i = 0; i < nums.length;i++){
+        int constant = target - nums[i];
+
+        if(targetmap.containsKey(constant)){
+            return new int[]{targetmap.get(constant),i};
+        }
+        targetmap.put(nums[i],i);
+      }
+      return new int[0];
+    }
+}
