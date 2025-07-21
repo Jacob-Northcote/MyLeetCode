@@ -1,0 +1,42 @@
+class Solution {
+    public int myAtoi(String s) {
+        int length1 = s.length();
+        int i = 0;
+        final int INT_MAX = Integer.MAX_VALUE;
+        final int INT_MIN = Integer.MIN_VALUE;
+
+        // white space
+        while(i < length1 && s.charAt(i) == ' '){
+            i++;
+        }
+
+        // negetive or positive
+        int sign = 1;
+
+        if (i < length1 && s.charAt(i) == '+') {
+            i++;
+        } else if (i < length1 && s.charAt(i) == '-') {
+            sign = -1;
+            i++;
+        }
+
+        long ret = 0;
+        int sum = 0;
+
+        //conversion
+        while(i < length1 && Character.isDigit(s.charAt(i))) {
+            sum = s.charAt(i) - '0';
+            ret = ret * 10 + sum;
+
+            if(sign * ret >= INT_MAX){
+                return INT_MAX;
+            }
+            if(sign * ret <= INT_MIN){
+                return INT_MIN;
+            }
+
+            i++;
+        }
+        return (int)ret * sign;
+    }
+}
