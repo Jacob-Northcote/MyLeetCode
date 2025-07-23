@@ -1,0 +1,42 @@
+class Solution {
+    public int[] plusOne(int[] digits) {
+        int n = digits.length;
+        int[] ret;
+
+        if ((n == 1 && digits[0] == 9) || 
+            (n == 2 && digits[0] == 9 && digits[1] == 9) || 
+            (n == 3 && digits[0] == 9 && digits[1] == 9 && digits[2] == 9)) {
+            ret = new int[n + 1];
+        } 
+        else {
+            ret = new int[n];
+        }
+
+        int r = ret.length;
+        boolean add = true;
+
+       int digitsIndex = n - 1; // index for digits[]
+for (int i = r - 1; i >= 0; i--) {
+    if (digitsIndex < 0) {
+        ret[i] = 1;
+        break;
+    }
+    else if (add == true && digits[digitsIndex] != 9) {
+        ret[i] = digits[digitsIndex] + 1;
+        add = false;
+    }
+    else if (add == false && digits[digitsIndex] != 9) {
+        ret[i] = digits[digitsIndex];
+    }
+    else if (add == true) {
+        ret[i] = 0;
+    }
+    else {
+        ret[i] = digits[digitsIndex];
+    }
+
+    digitsIndex--; // move to the next digit on each loop
+}
+        return ret;
+    }
+}
