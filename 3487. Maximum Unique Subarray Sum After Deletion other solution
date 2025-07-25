@@ -1,0 +1,17 @@
+class Solution {
+    public int maxSum(int[] nums) {
+       int ret = 0;
+       HashSet <Integer> noDuplicates = new HashSet <>();
+       for(int num: nums){
+            noDuplicates.add(num);
+    
+       }
+      for (int num : noDuplicates) {
+            ret = Math.max(ret, ret + num);
+        }
+        if(ret == 0){
+            return Arrays.stream(nums).max().getAsInt();
+        }
+       return ret;
+    }
+}
