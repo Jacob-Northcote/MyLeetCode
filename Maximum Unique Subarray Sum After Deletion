@@ -1,0 +1,18 @@
+class Solution {
+    public int maxSum(int[] nums) {
+        int ret = 0;
+        HashSet <Integer> nonDupe = new HashSet<>();
+        for(int i: nums){
+            nonDupe.add(i);
+        }
+        for(int j: nonDupe){
+            if(j >= 0){
+                ret += j;
+            }
+        }
+        if(ret == 0){
+            ret = Arrays.stream(nums).max().getAsInt();
+        }
+        return ret;
+    }
+}
