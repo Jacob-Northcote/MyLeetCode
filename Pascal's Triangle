@@ -1,0 +1,35 @@
+import java.util.ArrayList;
+import java.util.List;
+
+class Solution {
+    public List<List<Integer>> generate(int numRows) {
+        List<List<Integer>> myList = new ArrayList<>();
+
+        if (numRows <= 0) {
+            return myList;
+        }
+
+        List<Integer> inList = new ArrayList<>();
+        inList.add(1);
+        myList.add(inList);
+
+        for (int out = 1; out < numRows; out++) {
+            List<Integer> lastList = myList.get(out - 1);
+            List<Integer> newList = new ArrayList<>();
+
+            for (int in = 0; in <= out; in++) {
+                if (in == 0 || in == out) {
+                    newList.add(1);
+                } else {
+                    int sum = lastList.get(in - 1) + lastList.get(in);
+                    newList.add(sum);
+                }
+            }
+
+            myList.add(newList);
+        }
+
+        return myList;
+    }
+}
+
