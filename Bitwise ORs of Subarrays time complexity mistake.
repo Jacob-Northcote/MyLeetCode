@@ -1,0 +1,13 @@
+class Solution {
+    public int subarrayBitwiseORs(int[] arr) {
+        HashSet<Integer> myHash = new HashSet();
+        for (int i = 0; i < arr.length; i++){
+            int or = 0;
+            for(int j = i; j < arr.length; j++){
+                or |= arr[j];
+                myHash.add(or);
+            }
+        }
+        return myHash.size();
+    }
+}
