@@ -1,0 +1,11 @@
+class Solution {
+    public int hammingDistance(int x, int y) {
+        int xor = x ^ y;  // XOR will have 1s where bits are different
+        int distance = 0;
+        while (xor != 0) {
+            distance += xor & 1;  // Add 1 if the last bit is 1
+            xor >>= 1;            // Shift right to check next bit
+        }
+        return distance;
+    }
+}
