@@ -1,0 +1,26 @@
+class Solution {
+    public String convert(String s, int numRows) {
+        if (numRows == 1 || s.length() <= numRows) return s;
+
+        HashMap<Integer, StringBuilder> letterMapping = new HashMap<>();
+        for (int i = 0; i < numRows; i++) {
+            letterMapping.put(i, new StringBuilder());
+        }
+
+        boolean goDown = false;
+        int curr = 0;
+        for(char c : s.toCharArray()){
+            letterMapping.get(curr).append(c);
+            if(curr == 0 || curr == numRows -1){
+                goDown = !goDown;
+            }
+            curr = goDown ? curr + 1 : curr - 1;
+        }
+
+        StringBuilder ret = new StringBuilder();
+        for (int j = 0; j < numRows; j++) {
+            ret.append(letterMapping.get(j));
+        }
+        return ret.toString();
+    }
+}
