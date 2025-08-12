@@ -1,0 +1,19 @@
+class Solution {
+    public int maxArea(int[] height) {
+
+        int largestContainer = 0;
+
+        for(int left = 0; left < height.length; left++){
+
+            int current =0;
+            int right = height.length - 1;
+
+            while(right > left){
+                current = (right - left) * Math.min(height[right],height[left]);
+                if (current > largestContainer) largestContainer = current;
+                right--;
+            }
+        }
+    return largestContainer;
+    }
+}
