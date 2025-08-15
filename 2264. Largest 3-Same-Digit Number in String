@@ -1,0 +1,20 @@
+class Solution {
+    public String largestGoodInteger(String num) {
+        int count = 1; 
+        char biggest = 0;
+        char prev = num.charAt(0);
+
+        for (int i = 1; i < num.length(); i++) {
+            if (num.charAt(i) == prev) {
+                count++;
+                if (count == 3) {
+                    biggest = (char) Math.max(biggest, prev);
+                }
+            } else {
+                count = 1; 
+            prev = num.charAt(i);
+        }
+
+        return biggest == 0 ? "" : "" + biggest + biggest + biggest;
+    }
+}
