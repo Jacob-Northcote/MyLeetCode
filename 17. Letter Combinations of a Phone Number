@@ -1,0 +1,21 @@
+class Solution {
+    public List<String> letterCombinations(String digits) {
+        if (digits == null || digits.length() == 0)return new ArrayList<>();
+        String[] letters = {"","","abc","def","ghi","jkl","mno","pqrs","tuv","wxyz"};
+        List<String> result = new ArrayList<>();
+        result.add("");
+
+        for(char c: digits.toCharArray()){
+            String curr = letters[c - '0'];
+            List<String> next = new ArrayList<>();
+
+            for(String i: result){
+                for(char j: curr.toCharArray()){
+                    next.add(i + j);
+                }
+            }
+            result = next;
+        }
+        return result;
+    }
+}
