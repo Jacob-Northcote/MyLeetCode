@@ -1,0 +1,28 @@
+class Solution {
+    public int minimumArea(int[][] grid) {
+        int rows = grid.length;
+        int cols = grid[0].length;
+        
+        int highestOne = rows;
+        int lowestOne = -1;
+        int shortestOne = cols;//closest to left
+        int longestOne = -1;// closest to right
+
+        for(int i = 0; i < rows;i++){
+            for(int j = 0; j < cols; j++){
+                if(grid[i][j] == 1){
+                    highestOne = Math.min(highestOne,i);
+                    lowestOne = Math.max(lowestOne,i);
+                    shortestOne = Math.min(shortestOne,j);
+                    longestOne = Math.max(longestOne,j);
+                }
+            }
+        }
+
+        if (lowestOne == -1) return 0;
+
+        int height = lowestOne - highestOne + 1;
+        int length = longestOne - shortestOne + 1;
+        return height * length;
+    }
+}
