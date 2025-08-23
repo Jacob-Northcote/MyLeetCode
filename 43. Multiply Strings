@@ -1,0 +1,7 @@
+class Solution(object):
+    def multiply(self, num1, num2):
+        numOne = int(num1)
+        numTwo = int(num2)
+        sum = numTwo * numOne
+        return str(sum)
+        
