@@ -1,0 +1,15 @@
+class Solution {
+    public List<String> generateParenthesis(int n) {
+      List<String> ret = new ArrayList<>();
+      backTrack(n, ret, "", 0, 0);
+      return ret;
+    }
+    public void backTrack(int len, List<String> ret, String curr, int open, int close){
+        if(curr.length() == len * 2){
+            ret.add(curr);
+            return;
+        }
+        if(open > close){backTrack(len,ret,curr + ")",open,close +1);}
+        if(open < len){backTrack(len,ret,curr + "(",open + 1,close);}
+    }
+}
