@@ -1,0 +1,37 @@
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+//three pointers, first ptr will advance until its not equal to the last, then the head/skipper tracker will set the new head as the non equal number skipping the last ones, the seccond pointer will move one behind the first one to track where the skipper will point to.
+class Solution {
+    public ListNode deleteDuplicates(ListNode head) {
+        if(head == null || head.next == null)return head;
+
+        ListNode dummy = new ListNode(0,head);
+        ListNode first = head;
+        ListNode last = dummy;
+        boolean dupe;
+
+        while(first != null){
+
+           dupe = false;
+            while (first.next != null && first.next.val == first.val) {
+                dupe = true;
+                first = first.next;
+            }
+            if(dupe){
+                last.next = first.next;
+            }else{
+                last = first;
+             }
+            first = first.next;
+            }
+        return dummy.next;
+    }
+}
