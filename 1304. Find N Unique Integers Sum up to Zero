@@ -1,0 +1,16 @@
+class Solution {
+    public int[] sumZero(int n) {
+
+        int[] ret = new int[n];
+         int index = 0;
+       if (n % 2 != 0) {
+            ret[index++] = 0;
+        }
+
+         for (int i = 1; index < n; i++) {
+            ret[index++] = -i;
+            ret[index++] = i;
+        }
+        return ret;
+    }
+}
