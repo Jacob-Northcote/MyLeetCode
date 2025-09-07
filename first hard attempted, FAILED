@@ -1,0 +1,30 @@
+class Solution {
+    public List<String> fullJustify(String[] words, int maxWidth) {
+        List<String> ret = new ArrayList<>();
+        int n = 0;
+
+        while (n < words.length){
+            StringBuilder curr = new StringBuilder<>();
+            int s = 0;
+
+            while(maxWidth > curr.length() && maxWidth >= curr.length() + words[n].length(){
+                curr.append(words[n]);
+                if(curr.length() + 1 <= maxWidth){curr.append(" ");}
+                n++;
+                s++; //count how many words it should use
+            }
+
+            n -= s;//reset n
+            int spacesNeeded = (curr.length() - maxWidth) / (s - 1); //spaces neded between each word also should have an error off by one space
+            String spaces = " ".repeat(spacesNeeded);
+            curr.setLength(0); // reset curr             
+            for(int i = n; i < s; i++){
+                curr.append(words[i]);
+                if(maxWidth >= curr.length() + spacesNeeded){curr.append(spaces);}
+            }
+            n++;
+            ret.add(curr.toString());
+        }
+        return ret;
+    }
+}
