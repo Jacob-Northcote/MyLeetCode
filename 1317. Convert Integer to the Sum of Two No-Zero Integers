@@ -1,0 +1,11 @@
+class Solution {
+    public int[] getNoZeroIntegers(int n) {
+       int[] ret = {n-1,1};
+       while(String.valueOf(ret[0]).contains("0") || String.valueOf(ret[1]).contains("0")){
+            ret[0]--;
+            ret[1]++;
+       }
+       return ret;
+    }
+   
+}
