@@ -1,0 +1,22 @@
+class Solution {
+    public String reverseWords(String s) {
+        Stack<String> stack = new Stack<>();
+        int first = 0;
+        int last = 0;
+        while(first < s.length()){
+            if(s.charAt(first) != ' ' && (first == 0 || s.charAt(first - 1) == ' ')){
+                last = first;
+            }
+            if(s.charAt(first) != ' ' && (first == s.length() - 1 || s.charAt(first + 1) == ' ')){
+                stack.push(s.substring(last, first + 1));
+            }
+            first++;
+        }
+        StringBuilder sb = new StringBuilder();
+        while (!stack.isEmpty()) {
+            sb.append(stack.pop());
+            if (!stack.isEmpty()) sb.append(' ');
+        }
+        return sb.toString();
+    }
+}
