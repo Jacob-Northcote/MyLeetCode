@@ -1,0 +1,13 @@
+class Solution {
+    public int[] getSneakyNumbers(int[] nums) {
+        Map<Integer, Integer> count = new HashMap<>();
+        List<Integer> res = new ArrayList<>();
+        for (int n : nums) {
+            count.put(n,count.getOrDefault(n,0)+1);
+        }
+         for (int n : count.keySet()) {
+            if(count.get(n) == 2)res.add(n);
+         }
+         return new int[]{res.get(0), res.get(1)};
+    }
+}
